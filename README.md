@@ -1,6 +1,6 @@
 # Stock-Trend
 
-Use this software if you want to download stock quotes with QT C++ and analyse them. This is just an example. It works, but it's a very minimal example. Feel free to fork and borrow the code.
+Use this software if you want to download stock quotes with QT 6 C++ and analyse them. This is just an example. It works, but it's a very minimal example. Feel free to fork and borrow the code.
 
 Add stock
 
