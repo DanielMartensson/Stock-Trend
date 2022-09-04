@@ -1,0 +1,51 @@
+#include "addstockwindow.h"
+#include "ui_addstockwindow.h"
+
+/* QT libraires */
+#include <QMessageBox>
+
+AddStockWindow::AddStockWindow(QWidget *parent, QTableWidget *stockListTableWidget) :
+    QWidget(parent),
+    ui(new Ui::AddStockWindow),
+    stockListTableWidget(stockListTableWidget)
+{
+    ui->setupUi(this);
+
+    // Connect
+    connect(&yahooFinance, &YahooFinance::transmitResult, this, &AddStockWindow::receiveResult);
+}
+
+AddStockWindow::~AddStockWindow()
+{
+    delete ui;
+}
+
+void AddStockWindow::on_addToStockListPushButton_clicked()
+{
+    // Check if this exist
+    stockName = ui->stockNameLineEdit->text();
+    stockIndexName = ui->selectedIndexComboBox->currentText();
+    yahooFinance.stockNameExist(stockName);
+}
+
+void AddStockWindow::receiveResult(int result){
+    // If status error is above 0, then we got an error
+    if(result > 0){
+        QMessageBox::warning(this, "Stock name", "No connection to that stock");
+    }else{
+        // Check if the stock name exist
+        int stockAdded = stockListTableWidget->rowCount();
+        bool exist = false;
+        for(int i = 0; i < stockAdded; i++){
+            if(stockName == stockListTableWidget->item(i, 0)->text()){
+                exist = true;
+                break;
+            }
+        }
+        
+        if(!exist){
+            stockListTableWidget.setc
+        }
+    }
+}
+
